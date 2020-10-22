@@ -44,13 +44,13 @@ PyShellManager::PyShellManager(ConstArrayView<EnvVarDesc> builtin_env_vars)
         return S_ISREG(st.st_mode) and executable;
     };
 
-    if (const char* shell = getenv("KAKOUNE_POSIX_SHELL"))
+    if (const char* shell = getenv("KAKOUNE_PYTHON_SHELL"))
     {
         if (not is_executable(shell))
-            throw runtime_error{format("KAKOUNE_POSIX_SHELL '{}' is not executable", shell)};
+            throw runtime_error{format("KAKOUNE_PYTHON_SHELL '{}' is not executable", shell)};
         m_shell = shell;
     }
-    else // Get a guaranteed to be POSIX shell binary
+    else // Get a guaranteed to be python binary
     {
         auto size = confstr(_CS_PATH, nullptr, 0);
         String path; path.resize(size-1, 0);
@@ -65,7 +65,7 @@ PyShellManager::PyShellManager(ConstArrayView<EnvVarDesc> builtin_env_vars)
             }
         }
         if (m_shell.empty())
-            throw runtime_error{format("unable to find a posix shell in {}", path)};
+            throw runtime_error{format("unable to find a posix python shell in {}", path)};
     }
 
     // Add Kakoune binary location to the path to guarantee that %sh{ ... }

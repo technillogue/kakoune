@@ -23,6 +23,7 @@
 #include "scope.hh"
 #include "shared_string.hh"
 #include "shell_manager.hh"
+#include "pyshell_manager.hh"
 #include "string.hh"
 #include "unit_tests.hh"
 #include "window.hh"
@@ -749,6 +750,7 @@ int run_server(StringView session, StringView server_init,
     StringRegistry      string_registry;
     GlobalScope         global_scope;
     ShellManager        shell_manager{builtin_env_vars};
+    PyShellManager	pyshell_manager{builtin_env_vars};
     CommandManager      command_manager;
     RegisterManager     register_manager;
     HighlighterRegistry highlighter_registry;
@@ -921,6 +923,7 @@ int run_filter(StringView keystr, ConstArrayView<StringView> files, bool quiet, 
     StringRegistry  string_registry;
     GlobalScope     global_scope;
     EventManager    event_manager;
+    PyShellManager  pyshell_manager{builtin_env_vars};
     ShellManager    shell_manager{builtin_env_vars};
     RegisterManager register_manager;
     BufferManager   buffer_manager;
