@@ -57,7 +57,7 @@ PyShellManager::PyShellManager(ConstArrayView<EnvVarDesc> builtin_env_vars)
         confstr(_CS_PATH, path.data(), size);
         for (auto dir : StringView{path} | split<StringView>(':'))
         {
-            auto candidate = format("{}/python", dir);
+            auto candidate = format("{}/python3", dir);
             if (is_executable(candidate))
             {
                 m_shell = std::move(candidate);
