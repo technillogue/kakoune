@@ -48,18 +48,19 @@ struct {
         "» {+u}set-option -remove{} support\n"
         "» prompts auto select {+i}menu{} completions on space\n"
         "» explicit completion support ({+b}<c-x>...{}) in prompts\n"
+        "» python shell, hopefully \n"
     }, {
         20200901,
-        "» daemon mode does not fork anymore\n"
+        "» daemon mode does not fork anymore\n python?"
     }, {
         20200804,
         "» {+u}User{} hook support\n"
-        "» Removed {+i}bold{} and {+i}italic{} faces from colorschemes\n"
+        "» Removed {+i}bold{} and {+i}italic{} faces from colorschemes\n. python?"
         "» Read from stdin support for clients\n"
         "» {+u}rgba:RRGGBBAA{} faces and alpha blending\n"
     }, {
         20200116,
-        "» {+u}InsertCompletionHide{} parameter is now the list of inserted ranges\n"
+        "» {+u}InsertCompletionHide{} parameter is now the list of inserted ranges. python?\n"
     }, {
         20191210,
         "» {+u}ModeChange{} parameter has changed to contain push/pop\n"

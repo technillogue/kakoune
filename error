@@ -1,0 +1,21 @@
+technillogue@hyle:~/kakoune/src$ ./kak
+Received SIGSEGV, exiting.
+Pid: 6799
+Callstack:
+./kak(_ZN7Kakoune9BacktraceC1Ev+0x1c) [0x7f746ddd9bec]
+./kak(_ZN7Kakoune14signal_handlerEi+0x73) [0x7f746deca5d3]
+/lib/x86_64-linux-gnu/libc.so.6(+0x46210) [0x7f746d8a6210]
+./kak(_ZN7Kakoune14PyShellManager4evalENS_10StringViewERKNS_7ContextES1_NS0_5FlagsERKNS_12ShellContextE+0x90b) [0x7f746df48e8b]
+./kak(_ZN7Kakoune14CommandManager7executeENS_10StringViewERNS_7ContextERKNS_12ShellContextE+0x52b) [0x7f746ddfce4b]
+./kak(+0x1cc3f1) [0x7f746def63f1]
+./kak(_ZN7Kakoune10InputModes6Prompt6on_keyENS_3KeyE+0x8eb) [0x7f746dea7b5b]
+./kak(_ZN7Kakoune12InputHandler10handle_keyENS_3KeyE+0xd9) [0x7f746de93739]
+./kak(_ZN7Kakoune6Client22process_pending_inputsEv+0x14e) [0x7f746ddef55e]
+./kak(_ZN7Kakoune13ClientManager22process_pending_inputsEv+0x59) [0x7f746ddf5329]
+./kak(_ZN7Kakoune10run_serverENS_10StringViewES0_S0_NS_8OptionalINS_11BufferCoordEEENS_11ServerFlagsENS_6UITypeENS_10DebugFlagsENS_9ArrayViewIKS0_EE+0x9bc) [0x7f746ded48ec]
+./kak(main+0x19c8) [0x7f746ddd7828]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7f746d8870b3]
+./kak(_start+0x2e) [0x7f746ddd82ee]
+Error: Can't open display:
+Segmentation fault (core dumped)
+

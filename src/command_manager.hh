@@ -47,6 +47,7 @@ struct Token
         RawQuoted,
         RawEval,
         ShellExpand,
+        PyShellExpand,
         RegisterExpand,
         OptionExpand,
         ValExpand,

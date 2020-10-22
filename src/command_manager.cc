@@ -12,6 +12,7 @@
 #include "regex.hh"
 #include "register_manager.hh"
 #include "shell_manager.hh"
+#include "pyshell_manager.hh"
 #include "utils.hh"
 #include "unit_tests.hh"
 
@@ -217,6 +218,8 @@ Token::Type token_type(StringView type_name, bool throw_on_invalid)
         return Token::Type::RawQuoted;
     else if (type_name == "sh")
         return Token::Type::ShellExpand;
+    else if (type_name == "py")
+        return Token::Type::PyShellExpand;
     else if (type_name == "reg")
         return Token::Type::RegisterExpand;
     else if (type_name == "opt")
@@ -321,6 +324,22 @@ expand_token(const Token& token, const Context& context, const ShellContext& she
     {
         auto str = ShellManager::instance().eval(
             content, context, {}, ShellManager::Flags::WaitForStdout,
+            shell_context).first;
+
+        int trailing_eol_count = 0;
+        for (auto c : str | reverse())
+        {
+            if (c != '\n')
+                break;
+            ++trailing_eol_count;
+        }
+        str.resize(str.length() - trailing_eol_count, 0);
+        return {str};
+    }
+    case Token::Type::PyShellExpand:
+    {
+        auto str = PyShellManager::instance().eval(
+            content, context, {}, PyShellManager::Flags::WaitForStdout,
             shell_context).first;
 
         int trailing_eol_count = 0;
