@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+import os
+import sys
+
+true_write = sys.stdout.write
+written = False
+
+
+def write(*args, **kwargs):
+    global written
+    written = True
+    true_write(*args, **kwargs)
+
+
+sys.stdout.write = write
+
+globals().update(
+    {key: value for key, value in os.environ.items() if key.startswith("kak")}
+)
+
+commands = " ".join(sys.argv[2:])
+try:
+    output = eval(commands)
+    if not written:
+        print(output)
+except (SyntaxError, TypeError):
+    exec(commands)
